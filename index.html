@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OPTES • UNIT 87</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700;800&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+--cyan:#00eaff;
+--blue:#4776ff;
+--purple:#a855f7;
+--pink:#ff3cac;
+--orange:#ff9f43;
+--red:#ff4d6d;
+--green:#39e58c;
+--bg:#070912;
+--panel:rgba(14,17,29,.91);
+--line:rgba(255,255,255,.11);
+--muted:#8e97ad;
+}
+
+body{
+min-height:100vh;
+color:#fff;
+font-family:Inter,sans-serif;
+background:
+radial-gradient(circle at 8% 10%,rgba(0,234,255,.18),transparent 27%),
+radial-gradient(circle at 92% 15%,rgba(168,85,247,.2),transparent 30%),
+radial-gradient(circle at 50% 100%,rgba(255,60,172,.16),transparent 35%),
+linear-gradient(135deg,#060812,#0d1020 48%,#080914);
+overflow-x:hidden;
+}
+
+body:before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+opacity:.12;
+background-image:
+linear-gradient(90deg,#fff 1px,transparent 1px),
+linear-gradient(#fff 1px,transparent 1px);
+background-size:30px 30px;
+}
+
+.container{
+width:min(950px,92%);
+margin:auto;
+padding:25px 0 55px;
+}
+
+.logo{text-align:center;margin-bottom:28px}
+
+.unit{
+display:inline-block;
+padding:7px 14px;
+border:1px solid rgba(0,234,255,.4);
+border-radius:20px;
+background:rgba(0,234,255,.07);
+color:var(--cyan);
+font-size:11px;
+font-weight:800;
+letter-spacing:4px;
+margin-bottom:12px;
+}
+
+.logo h1{
+font-family:'Press Start 2P',cursive;
+font-size:clamp(30px,8vw,58px);
+letter-spacing:4px;
+background:linear-gradient(90deg,var(--cyan),var(--blue),var(--purple),var(--pink),var(--orange));
+-webkit-background-clip:text;
+color:transparent;
+text-shadow:5px 5px 0 rgba(0,0,0,.45);
+}
+
+.logo p{color:#8f98ae;margin-top:10px;font-size:13px}
+
+.card{
+background:var(--panel);
+border:1px solid var(--line);
+border-radius:22px;
+padding:22px;
+margin-bottom:17px;
+backdrop-filter:blur(18px);
+box-shadow:0 20px 60px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.04);
+}
+
+.login-card{max-width:470px;margin:30px auto}
+
+.login-icon{
+width:70px;height:70px;
+display:grid;place-items:center;
+margin:0 auto 18px;
+border-radius:20px;
+font-size:30px;
+background:linear-gradient(135deg,rgba(0,234,255,.13),rgba(168,85,247,.16));
+border:1px solid rgba(0,234,255,.28);
+}
+
+.login-title{text-align:center;margin-bottom:24px}
+
+.login-title h2{
+font-family:'Press Start 2P',cursive;
+font-size:17px;
+margin-bottom:10px;
+}
+
+.login-title p{color:var(--muted);font-size:13px}
+
+.card h2{font-size:18px;margin-bottom:8px}
+
+.card-title{
+font-family:'Press Start 2P',cursive!important;
+font-size:15px!important;
+margin-bottom:18px!important;
+}
+
+label{
+display:block;
+margin:15px 0 7px;
+color:#cdd4e7;
+font-size:12px;
+font-weight:700;
+}
+
+input,select{
+width:100%;
+padding:14px;
+border:1px solid rgba(255,255,255,.12);
+border-radius:13px;
+background:#090c16;
+color:white;
+outline:none;
+font-family:Inter,sans-serif;
+font-size:14px;
+}
+
+input:focus,select:focus{
+border-color:var(--cyan);
+box-shadow:0 0 0 3px rgba(0,234,255,.08);
+}
+
+button{
+width:100%;
+padding:13px 15px;
+margin-top:15px;
+border:1px solid rgba(255,255,255,.12);
+border-radius:13px;
+color:#fff;
+font-family:Inter,sans-serif;
+font-weight:800;
+cursor:pointer;
+transition:.2s;
+}
+
+button:hover{filter:brightness(1.12);transform:translateY(-1px)}
+button:active{transform:scale(.98)}
+
+.blue{background:linear-gradient(135deg,#00c6ff,#4776ff)}
+.purple{background:linear-gradient(135deg,#8b5cf6,#d946ef)}
+.green{background:linear-gradient(135deg,#00c853,#39e58c)}
+.red{background:linear-gradient(135deg,#ff416c,#ff4b2b)}
+.orange{background:linear-gradient(135deg,#ff7a18,#ffb347)}
+.secondary{background:#242938}
+.hidden{display:none!important}
+
+.profile{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+}
+
+.profile h2{margin:0}
+.profile p{color:var(--muted);margin-top:5px;font-size:12px}
+
+.small{
+width:auto;
+margin:0;
+padding:9px 12px;
+font-size:10px;
+}
+
+.info{
+padding:14px;
+margin-top:15px;
+border-radius:14px;
+background:linear-gradient(135deg,rgba(0,234,255,.06),rgba(168,85,247,.07));
+border:1px solid rgba(255,255,255,.08);
+color:#c9d1e4;
+font-size:13px;
+line-height:1.5;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+margin-bottom:17px;
+}
+
+.stat{
+min-height:105px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+border:1px solid var(--line);
+border-radius:18px;
+background:var(--panel);
+}
+
+.stat strong{font-size:29px;margin-bottom:7px}
+.stat span{color:var(--muted);font-size:9px;letter-spacing:1px;font-weight:800}
+
+.stat:nth-child(1) strong{color:var(--cyan)}
+.stat:nth-child(2) strong{color:var(--orange)}
+.stat:nth-child(3) strong{color:var(--green)}
+.stat:nth-child(4) strong{color:var(--red)}
+
+.upload-box{
+margin-top:17px;
+padding:18px;
+border-radius:18px;
+border:1px dashed rgba(0,234,255,.3);
+background:rgba(0,234,255,.035);
+}
+
+.file-input{display:none!important}
+
+.file-label{
+width:100%;
+min-height:115px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+border-radius:16px;
+border:1px solid rgba(168,85,247,.35);
+background:linear-gradient(135deg,rgba(0,234,255,.08),rgba(168,85,247,.09));
+text-align:center;
+cursor:pointer;
+transition:.2s;
+}
+
+.file-label:hover{
+border-color:var(--cyan);
+background:rgba(0,234,255,.09);
+}
+
+.file-label b{
+display:block;
+color:#fff;
+font-size:16px;
+margin-bottom:8px;
+}
+
+.file-label span{
+color:#9fa8bd;
+font-size:12px;
+line-height:1.5;
+}
+
+.file-name{
+margin-top:10px;
+text-align:center;
+color:var(--muted);
+font-size:11px;
+word-break:break-all;
+}
+
+.preview{
+width:100%;
+max-height:330px;
+margin-top:14px;
+border-radius:15px;
+background:#000;
+border:1px solid rgba(255,255,255,.1);
+}
+
+.submission{
+padding:17px;
+margin-top:12px;
+border:1px solid var(--line);
+border-radius:17px;
+background:#0a0d17;
+}
+
+.submission-top{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:10px;
+}
+
+.submission strong{
+font-size:14px;
+word-break:break-word;
+}
+
+.submission video{
+width:100%;
+max-height:350px;
+margin-top:14px;
+border-radius:13px;
+background:#000;
+}
+
+.meta{color:var(--muted);font-size:11px;margin-top:6px}
+
+.status{
+display:inline-block;
+padding:6px 9px;
+border-radius:20px;
+font-size:9px;
+font-weight:900;
+white-space:nowrap;
+}
+
+.pending{
+color:var(--orange);
+background:rgba(255,159,67,.1);
+border:1px solid rgba(255,159,67,.2);
+}
+
+.lolos{
+color:var(--green);
+background:rgba(57,229,140,.1);
+border:1px solid rgba(57,229,140,.2);
+}
+
+.tidak{
+color:var(--red);
+background:rgba(255,77,109,.1);
+border:1px solid rgba(255,77,109,.2);
+}
+
+.actions{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px;
+margin-top:12px;
+}
+
+.actions button{margin:0;font-size:10px}
+
+.empty{
+text-align:center;
+padding:28px 10px;
+color:#687187;
+font-size:13px;
+}
+
+.video-item{
+margin-top:12px;
+padding:12px;
+border-radius:16px;
+background:#0a0d17;
+border:1px solid var(--line);
+}
+
+.video-item video{
+width:100%;
+max-height:300px;
+border-radius:12px;
+background:#000;
+}
+
+.video-item p{
+color:#a0a8bb;
+font-size:11px;
+margin:8px 0;
+word-break:break-word;
+}
+
+footer{
+text-align:center;
+color:#50596e;
+font-size:10px;
+margin-top:28px;
+}
+
+.message-overlay{
+position:fixed;
+inset:0;
+z-index:9999;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:rgba(0,0,0,.65);
+backdrop-filter:blur(9px);
+opacity:0;
+visibility:hidden;
+transition:.25s;
+}
+
+.message-overlay.show{
+opacity:1;
+visibility:visible;
+}
+
+.message-box{
+width:min(360px,100%);
+padding:28px 22px;
+border-radius:23px;
+text-align:center;
+background:rgba(12,15,27,.98);
+border:1px solid rgba(255,255,255,.12);
+box-shadow:0 25px 80px rgba(0,0,0,.6);
+animation:pop .3s ease;
+}
+
+@keyframes pop{
+from{opacity:0;transform:scale(.78)}
+to{opacity:1;transform:scale(1)}
+}
+
+.message-icon{
+width:62px;
+height:62px;
+display:grid;
+place-items:center;
+margin:0 auto 14px;
+border-radius:50%;
+font-size:31px;
+font-weight:900;
+}
+
+.message-icon.success{
+color:var(--green);
+background:rgba(57,229,140,.1);
+border:1px solid rgba(57,229,140,.3);
+}
+
+.message-icon.error{
+color:var(--red);
+background:rgba(255,77,109,.1);
+border:1px solid rgba(255,77,109,.3);
+}
+
+.message-icon.info{
+color:var(--cyan);
+background:rgba(0,234,255,.1);
+border:1px solid rgba(0,234,255,.3);
+}
+
+.message-icon.loading-icon{
+background:rgba(168,85,247,.1);
+border:1px solid rgba(168,85,247,.3);
+}
+
+.message-box h3{
+font-size:18px;
+margin-bottom:7px;
+}
+
+.message-box p{
+color:var(--muted);
+font-size:12px;
+line-height:1.5;
+}
+
+.spinner{
+width:28px;
+height:28px;
+border:3px solid rgba(255,255,255,.12);
+border-top-color:var(--cyan);
+border-right-color:var(--purple);
+border-radius:50%;
+animation:spin .7s linear infinite;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:650px){
+.container{width:93%;padding-top:18px}
+.card{padding:17px}
+.stats{grid-template-columns:repeat(2,1fr)}
+.actions{grid-template-columns:1fr}
+.submission-top{flex-direction:column}
+.profile{align-items:flex-start}
+.logo h1{font-size:37px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="logo">
+<div class="unit">UNIT 87</div>
+<h1>OPTES</h1>
+<p>Online Pendaftaran & Tes</p>
+</header>
+
+<section id="loginCard" class="card login-card">
+
+<div class="login-icon">◈</div>
+
+<div class="login-title">
+<h2>WELCOME</h2>
+<p>Masuk untuk melanjutkan</p>
+</div>
+
+<label for="username">Username</label>
+<input id="username" type="text" placeholder="Masukkan username" autocomplete="off">
+
+<div id="phoneArea">
+<label for="number">Nomor WhatsApp</label>
+<input id="number" type="tel" inputmode="numeric" placeholder="Masukkan nomor WhatsApp" autocomplete="off">
+</div>
+
+<button class="blue" onclick="login()">MASUK</button>
+
+</section>
+
+<section id="memberPanel" class="hidden">
+
+<div class="card">
+
+<div class="profile">
+<div>
+<h2 id="memberName"></h2>
+<p id="memberNumber"></p>
+</div>
+
+<button class="red small" onclick="logout()">KELUAR</button>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2 class="card-title">UPLOAD VIDEO</h2>
+
+<p style="color:#8e97ad;font-size:12px">
+Pilih video dari perangkat kamu.
+</p>
+
+<div class="upload-box">
+
+<label class="file-label" for="videoInput">
+<span>
+<b>＋ PILIH VIDEO</b>
+Ketuk untuk membuka galeri atau file manager
+</span>
+</label>
+
+<input id="videoInput" class="file-input" type="file" accept="video/*">
+
+<div id="videoFileName" class="file-name">
+Belum ada video dipilih
+</div>
+
+<video id="memberPreview" class="preview hidden" controls playsinline></video>
+
+<button class="purple" onclick="submitVideo()">KIRIM VIDEO</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2 class="card-title">STATUS</h2>
+
+<div id="memberStatus"></div>
+
+</div>
+
+</section>
+
+<section id="adminPanel" class="hidden">
+
+<div class="card">
+
+<div class="profile">
+
+<div>
+<h2>UNIT 87</h2>
+<p>Dashboard</p>
+</div>
+
+<button class="red small" onclick="logout()">KELUAR</button>
+
+</div>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<strong id="total">0</strong>
+<span>TOTAL</span>
+</div>
+
+<div class="stat">
+<strong id="pending">0</strong>
+<span>PENDING</span>
+</div>
+
+<div class="stat">
+<strong id="lolos">0</strong>
+<span>LOLOS</span>
+</div>
+
+<div class="stat">
+<strong id="tidakLolos">0</strong>
+<span>TIDAK LOLOS</span>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2 class="card-title">UPLOAD VIDEO</h2>
+
+<div class="upload-box">
+
+<label class="file-label" for="adminVideo">
+<span>
+<b>＋ PILIH VIDEO</b>
+Ketuk untuk memilih video
+</span>
+</label>
+
+<input id="adminVideo" class="file-input" type="file" accept="video/*">
+
+<div id="adminFileName" class="file-name">
+Belum ada video dipilih
+</div>
+
+<video id="adminPreview" class="preview hidden" controls playsinline></video>
+
+<button class="blue" onclick="uploadAdminVideo()">UPLOAD VIDEO</button>
+
+</div>
+
+<div id="adminVideos"></div>
+
+</div>
+
+<div class="card">
+
+<h2 class="card-title">SUBMISSION</h2>
+
+<input id="search" type="text" placeholder="Cari username / nomor..." oninput="renderAdmin()">
+
+<select id="filter" onchange="renderAdmin()" style="margin-top:10px">
+<option value="all">SEMUA</option>
+<option value="pending">PENDING</option>
+<option value="lolos">LOLOS</option>
+<option value="tidak">TIDAK LOLOS</option>
+</select>
+
+<div id="adminSubmissions"></div>
+
+</div>
+
+</section>
+
+<footer>
+OPTES • UNIT 87
+</footer>
+
+</div>
+
+<div id="messageOverlay" class="message-overlay">
+
+<div class="message-box">
+
+<div id="messageIcon" class="message-icon"></div>
+
+<h3 id="messageTitle"></h3>
+
+<p id="messageText"></p>
+
+</div>
+
+</div>
+
+<script>
+const ADMIN_CODE = "##@1";
+
+let submissions = [];
+let adminVideos = [];
+
+let currentMember =
+JSON.parse(sessionStorage.getItem("optes_member") || "null");
+
+let db;
+
+function openDatabase(){
+
+return new Promise((resolve,reject)=>{
+
+const request = indexedDB.open("OPTES_DATABASE",1);
+
+request.onupgradeneeded = function(event){
+
+const database = event.target.result;
+
+if(!database.objectStoreNames.contains("videos")){
+database.createObjectStore("videos",{keyPath:"id"});
+}
+
+};
+
+request.onsuccess = function(event){
+db = event.target.result;
+resolve(db);
+};
+
+request.onerror = function(){
+reject(request.error);
+};
+
+});
+
+}
+
+function dbPut(data){
+
+return new Promise((resolve,reject)=>{
+
+const transaction = db.transaction("videos","readwrite");
+const store = transaction.objectStore("videos");
+const request = store.put(data);
+
+request.onsuccess = ()=>resolve();
+request.onerror = ()=>reject(request.error);
+
+});
+
+}
+
+function dbGetAll(){
+
+return new Promise((resolve,reject)=>{
+
+const transaction = db.transaction("videos","readonly");
+const store = transaction.objectStore("videos");
+const request = store.getAll();
+
+request.onsuccess = ()=>{
+resolve(request.result || []);
+};
+
+request.onerror = ()=>{
+reject(request.error);
+};
+
+});
+
+}
+
+function dbDelete(id){
+
+return new Promise((resolve,reject)=>{
+
+const transaction = db.transaction("videos","readwrite");
+const store = transaction.objectStore("videos");
+const request = store.delete(id);
+
+request.onsuccess = ()=>resolve();
+request.onerror = ()=>reject(request.error);
+
+});
+
+}
+
+function saveSubmissions(){
+
+const clean = submissions.map(x=>{
+const copy = {...x};
+delete copy.video;
+return copy;
+});
+
+localStorage.setItem(
+"optes_submissions",
+JSON.stringify(clean)
+);
+
+}
+
+function loadSubmissions(){
+
+submissions =
+JSON.parse(
+localStorage.getItem("optes_submissions") || "[]"
+);
+
+}
+
+function showMessage(title,text,type="info",duration=1700){
+
+const overlay =
+document.getElementById("messageOverlay");
+
+const icon =
+document.getElementById("messageIcon");
+
+document.getElementById("messageTitle")
+.textContent = title;
+
+document.getElementById("messageText")
+.textContent = text;
+
+icon.className =
+"message-icon " + type;
+
+if(type==="success"){
+icon.textContent = "✓";
+}
+else if(type==="error"){
+icon.textContent = "×";
+}
+else if(type==="loading-icon"){
+icon.innerHTML = '<div class="spinner"></div>';
+}
+else{
+icon.textContent = "i";
+}
+
+overlay.classList.add("show");
+
+clearTimeout(window.messageTimer);
+
+if(duration > 0){
+window.messageTimer =
+setTimeout(hideMessage,duration);
+}
+
+}
+
+function hideMessage(){
+document.getElementById("messageOverlay").classList.remove("show");
+}
+
+function loading(){
+
+showMessage(
+"Memproses...",
+"Mohon tunggu sebentar.",
+"loading-icon",
+0
+);
+
+}
+
+function hidePanels(){
+
+document.getElementById("loginCard").classList.add("hidden");
+document.getElementById("memberPanel").classList.add("hidden");
+document.getElementById("adminPanel").classList.add("hidden");
+
+}
+
+function login(){
+
+const username =
+document.getElementById("username").value.trim();
+
+const number =
+document.getElementById("number").value.replace(/\D/g,"");
+
+if(!username){
+
+showMessage(
+"Username Kosong",
+"Masukkan username terlebih dahulu.",
+"error"
+);
+
+return;
+}
+
+if(username === ADMIN_CODE){
+
+loading();
+
+setTimeout(()=>{
+
+sessionStorage.setItem("optes_admin","true");
+
+hideMessage();
+openAdmin();
+
+},600);
+
+return;
+}
+
+if(number.length < 8){
+
+showMessage(
+"Nomor Tidak Valid",
+"Masukkan nomor WhatsApp yang benar.",
+"error"
+);
+
+return;
+}
+
+loading();
+
+setTimeout(()=>{
+
+currentMember = {
+username:username,
+number:number
+};
+
+sessionStorage.setItem(
+"optes_member",
+JSON.stringify(currentMember)
+);
+
+hideMessage();
+openMember();
+
+},600);
+
+}
+
+function openMember(){
+
+hidePanels();
+
+document.getElementById("memberPanel").classList.remove("hidden");
+
+document.getElementById("memberName").textContent =
+currentMember.username;
+
+document.getElementById("memberNumber").textContent =
+"WhatsApp: " + currentMember.number;
+
+renderMemberStatus();
+
+}
+
+async function openAdmin(){
+
+hidePanels();
+
+document.getElementById("adminPanel").classList.remove("hidden");
+
+renderAdmin();
+
+await renderAdminVideos();
+
+}
+
+function logout(){
+
+sessionStorage.clear();
+location.reload();
+
+}
+
+document.getElementById("username")
+.addEventListener("input",function(){
+
+const isAdmin =
+this.value.trim() === ADMIN_CODE;
+
+document.getElementById("phoneArea")
+.classList.toggle("hidden",isAdmin);
+
+});
+
+document.getElementById("username")
+.addEventListener("keydown",function(e){
+
+if(e.key === "Enter"){
+login();
+}
+
+});
+
+document.getElementById("number")
+.addEventListener("keydown",function(e){
+
+if(e.key === "Enter"){
+login();
+}
+
+});
+
+document.getElementById("videoInput")
+.addEventListener("change",function(){
+
+const file = this.files[0];
+
+const name =
+document.getElementById("videoFileName");
+
+const preview =
+document.getElementById("memberPreview");
+
+if(!file){
+
+name.textContent = "Belum ada video dipilih";
+preview.classList.add("hidden");
+
+return;
+}
+
+if(!file.type.startsWith("video/")){
+
+this.value = "";
+
+showMessage(
+"File Tidak Valid",
+"Pilih file video.",
+"error"
+);
+
+return;
+}
+
+name.textContent = file.name;
+
+const url = URL.createObjectURL(file);
+
+preview.src = url;
+preview.classList.remove("hidden");
+
+});
+
+document.getElementById("adminVideo")
+.addEventListener("change",function(){
+
+const file = this.files[0];
+
+const name =
+document.getElementById("adminFileName");
+
+const preview =
+document.getElementById("adminPreview");
+
+if(!file){
+
+name.textContent = "Belum ada video dipilih";
+preview.classList.add("hidden");
+
+return;
+}
+
+if(!file.type.startsWith("video/")){
+
+this.value = "";
+
+showMessage(
+"File Tidak Valid",
+"Pilih file video.",
+"error"
+);
+
+return;
+}
+
+name.textContent = file.name;
+
+preview.src = URL.createObjectURL(file);
+preview.classList.remove("hidden");
+
+});
+
+async function submitVideo(){
+
+const input =
+document.getElementById("videoInput");
+
+const file =
+input.files[0];
+
+if(!file){
+
+showMessage(
+"Pilih Video",
+"Pilih video terlebih dahulu.",
+"error"
+);
+
+return;
+}
+
+if(!file.type.startsWith("video/")){
+
+showMessage(
+"File Tidak Valid",
+"File yang dipilih bukan video.",
+"error"
+);
+
+return;
+}
+
+loading();
+
+try{
+
+const id =
+"member_" +
+Date.now() +
+"_" +
+Math.random().toString(36).slice(2);
+
+await dbPut({
+
+id:id,
+type:"member",
+username:currentMember.username,
+number:currentMember.number,
+fileName:file.name,
+mime:file.type,
+blob:file,
+created:new Date().toISOString()
+
+});
+
+submissions.push({
+
+id:id,
+username:currentMember.username,
+number:currentMember.number,
+fileName:file.name,
+status:"pending",
+created:new Date().toISOString()
+
+});
+
+saveSubmissions();
+
+input.value = "";
+
+document.getElementById("videoFileName")
+.textContent = "Belum ada video dipilih";
+
+document.getElementById("memberPreview")
+.classList.add("hidden");
+
+renderMemberStatus();
+
+showMessage(
+"Berhasil!",
+"Video berhasil dikirim.",
+"success"
+);
+
+}catch(error){
+
+console.error(error);
+
+showMessage(
+"Gagal",
+"Video tidak berhasil disimpan di perangkat.",
+"error",
+2400
+);
+
+}
+
+}
+
+async function getVideo(id){
+
+return new Promise((resolve,reject)=>{
+
+const transaction =
+db.transaction("videos","readonly");
+
+const store =
+transaction.objectStore("videos");
+
+const request =
+store.get(id);
+
+request.onsuccess = ()=>{
+resolve(request.result);
+};
+
+request.onerror = ()=>{
+reject(request.error);
+};
+
+});
+
+}
+  async function renderMemberStatus(){
+
+const box =
+document.getElementById("memberStatus");
+
+const mine =
+submissions.filter(x=>
+x.username === currentMember.username &&
+x.number === currentMember.number
+);
+
+if(!mine.length){
+
+box.innerHTML =
+'<div class="empty">Belum ada submission.</div>';
+
+return;
+}
+
+box.innerHTML = "";
+
+for(const item of mine){
+
+const wrapper =
+document.createElement("div");
+
+wrapper.className = "submission";
+
+let statusClass = "pending";
+let statusText = "PENDING";
+
+if(item.status === "lolos"){
+statusClass = "lolos";
+statusText = "LOLOS";
+}
+
+if(item.status === "tidak"){
+statusClass = "tidak";
+statusText = "TIDAK LOLOS";
+}
+
+wrapper.innerHTML = `
+<div class="submission-top">
+
+<div>
+<strong>${escapeHTML(item.fileName)}</strong>
+
+<div class="meta">
+${formatDate(item.created)}
+</div>
+</div>
+
+<span class="status ${statusClass}">
+${statusText}
+</span>
+
+</div>
+`;
+
+const videoData =
+await getVideo(item.id);
+
+if(videoData && videoData.blob){
+
+const video =
+document.createElement("video");
+
+video.className = "preview";
+video.controls = true;
+video.playsInline = true;
+
+video.src =
+URL.createObjectURL(videoData.blob);
+
+wrapper.appendChild(video);
+
+}
+
+box.appendChild(wrapper);
+
+}
+
+}
+
+async function renderAdmin(){
+
+const box =
+document.getElementById("adminSubmissions");
+
+const search =
+(document.getElementById("search").value || "")
+.toLowerCase();
+
+const filter =
+document.getElementById("filter").value;
+
+const data =
+submissions.filter(x=>{
+
+const matchSearch =
+x.username.toLowerCase().includes(search) ||
+x.number.includes(search);
+
+const matchFilter =
+filter === "all" ||
+x.status === filter;
+
+return matchSearch && matchFilter;
+
+});
+
+updateStats();
+
+if(!data.length){
+
+box.innerHTML =
+'<div class="empty">Tidak ada submission.</div>';
+
+return;
+}
+
+box.innerHTML = "";
+
+for(const item of data){
+
+const wrapper =
+document.createElement("div");
+
+wrapper.className = "submission";
+
+let statusClass = "pending";
+let statusText = "PENDING";
+
+if(item.status === "lolos"){
+statusClass = "lolos";
+statusText = "LOLOS";
+}
+
+if(item.status === "tidak"){
+statusClass = "tidak";
+statusText = "TIDAK LOLOS";
+}
+
+wrapper.innerHTML = `
+<div class="submission-top">
+
+<div>
+
+<strong>
+${escapeHTML(item.username)}
+</strong>
+
+<div class="meta">
+WhatsApp: ${escapeHTML(item.number)}
+</div>
+
+<div class="meta">
+${escapeHTML(item.fileName)}
+•
+${formatDate(item.created)}
+</div>
+
+</div>
+
+<span class="status ${statusClass}">
+${statusText}
+</span>
+
+</div>
+`;
+
+const videoData =
+await getVideo(item.id);
+
+if(videoData && videoData.blob){
+
+const video =
+document.createElement("video");
+
+video.className = "preview";
+video.controls = true;
+video.playsInline = true;
+
+video.src =
+URL.createObjectURL(videoData.blob);
+
+wrapper.appendChild(video);
+
+}
+
+const actions =
+document.createElement("div");
+
+actions.className = "actions";
+
+const copyButton =
+document.createElement("button");
+
+copyButton.className = "blue";
+copyButton.textContent = "SALIN NOMOR";
+
+copyButton.onclick = ()=>
+copyNumber(item.number);
+
+const passButton =
+document.createElement("button");
+
+passButton.className = "green";
+passButton.textContent = "✓ LOLOS";
+
+passButton.onclick = ()=>
+setStatus(item.id,"lolos");
+
+const rejectButton =
+document.createElement("button");
+
+rejectButton.className = "red";
+rejectButton.textContent = "✕ TIDAK LOLOS";
+
+rejectButton.onclick = ()=>
+setStatus(item.id,"tidak");
+
+actions.appendChild(copyButton);
+actions.appendChild(passButton);
+actions.appendChild(rejectButton);
+
+wrapper.appendChild(actions);
+
+box.appendChild(wrapper);
+
+}
+
+}
+
+function setStatus(id,status){
+
+const item =
+submissions.find(x=>x.id === id);
+
+if(!item)return;
+
+item.status = status;
+
+saveSubmissions();
+
+renderAdmin();
+
+showMessage(
+status === "lolos"
+? "LOLOS"
+: "TIDAK LOLOS",
+
+status === "lolos"
+? "Submission dinyatakan lolos."
+: "Submission dinyatakan tidak lolos.",
+
+status === "lolos"
+? "success"
+: "error"
+);
+
+}
+
+function updateStats(){
+
+document.getElementById("total")
+.textContent = submissions.length;
+
+document.getElementById("pending")
+.textContent =
+submissions.filter(
+x=>x.status==="pending"
+).length;
+
+document.getElementById("lolos")
+.textContent =
+submissions.filter(
+x=>x.status==="lolos"
+).length;
+
+document.getElementById("tidakLolos")
+.textContent =
+submissions.filter(
+x=>x.status==="tidak"
+).length;
+
+}
+
+async function copyNumber(number){
+
+try{
+
+await navigator.clipboard.writeText(number);
+
+}catch{
+
+const area =
+document.createElement("textarea");
+
+area.value = number;
+
+document.body.appendChild(area);
+
+area.select();
+
+document.execCommand("copy");
+
+area.remove();
+
+}
+
+showMessage(
+"Tersalin",
+"Nomor berhasil disalin.",
+"success"
+);
+
+}
+
+async function uploadAdminVideo(){
+
+const input =
+document.getElementById("adminVideo");
+
+const file =
+input.files[0];
+
+if(!file){
+
+showMessage(
+"Pilih Video",
+"Pilih video terlebih dahulu.",
+"error"
+);
+
+return;
+}
+
+if(!file.type.startsWith("video/")){
+
+showMessage(
+"File Tidak Valid",
+"Pilih file video.",
+"error"
+);
+
+return;
+}
+
+loading();
+
+try{
+
+const id =
+"admin_" +
+Date.now() +
+"_" +
+Math.random().toString(36).slice(2);
+
+await dbPut({
+
+id:id,
+type:"admin",
+fileName:file.name,
+mime:file.type,
+blob:file,
+created:new Date().toISOString()
+
+});
+
+adminVideos.push({
+
+id:id,
+fileName:file.name,
+created:new Date().toISOString()
+
+});
+
+localStorage.setItem(
+"optes_admin_videos",
+JSON.stringify(adminVideos)
+);
+
+input.value = "";
+
+document.getElementById("adminFileName")
+.textContent = "Belum ada video dipilih";
+
+document.getElementById("adminPreview")
+.classList.add("hidden");
+
+await renderAdminVideos();
+
+showMessage(
+"Berhasil!",
+"Video berhasil disimpan.",
+"success"
+);
+
+}catch(error){
+
+console.error(error);
+
+showMessage(
+"Gagal",
+"Video tidak berhasil disimpan.",
+"error",
+2400
+);
+
+}
+
+}
+
+async function renderAdminVideos(){
+
+const box =
+document.getElementById("adminVideos");
+
+if(!adminVideos.length){
+
+box.innerHTML =
+'<div class="empty">Belum ada video.</div>';
+
+return;
+}
+
+box.innerHTML = "";
+
+for(const item of adminVideos){
+
+const wrapper =
+document.createElement("div");
+
+wrapper.className = "video-item";
+
+const videoData =
+await getVideo(item.id);
+
+if(videoData && videoData.blob){
+
+const video =
+document.createElement("video");
+
+video.controls = true;
+video.playsInline = true;
+
+video.src =
+URL.createObjectURL(videoData.blob);
+
+wrapper.appendChild(video);
+
+}
+
+const title =
+document.createElement("p");
+
+title.textContent =
+item.fileName +
+" • " +
+formatDate(item.created);
+
+const remove =
+document.createElement("button");
+
+remove.className = "red";
+remove.textContent = "HAPUS";
+
+remove.onclick = ()=>
+deleteAdminVideo(item.id);
+
+wrapper.appendChild(title);
+wrapper.appendChild(remove);
+
+box.appendChild(wrapper);
+
+}
+
+}
+
+async function deleteAdminVideo(id){
+
+await dbDelete(id);
+
+adminVideos =
+adminVideos.filter(x=>x.id !== id);
+
+localStorage.setItem(
+"optes_admin_videos",
+JSON.stringify(adminVideos)
+);
+
+renderAdminVideos();
+
+showMessage(
+"Dihapus",
+"Video berhasil dihapus.",
+"success"
+);
+
+}
+
+async function deleteSubmission(id){
+
+await dbDelete(id);
+
+submissions =
+submissions.filter(x=>x.id !== id);
+
+saveSubmissions();
+
+renderAdmin();
+
+showMessage(
+"Dihapus",
+"Submission berhasil dihapus.",
+"success"
+);
+
+}
+
+function formatDate(date){
+
+return new Date(date).toLocaleString(
+"id-ID",
+{
+dateStyle:"medium",
+timeStyle:"short"
+}
+);
+
+}
+
+function escapeHTML(value){
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+async function init(){
+
+try{
+
+await openDatabase();
+
+loadSubmissions();
+
+adminVideos =
+JSON.parse(
+localStorage.getItem(
+"optes_admin_videos"
+) || "[]"
+);
+
+if(
+sessionStorage.getItem("optes_admin")
+===
+"true"
+){
+
+await openAdmin();
+return;
+
+}
+
+if(currentMember){
+
+openMember();
+return;
+
+}
+
+}catch(error){
+
+console.error(error);
+
+showMessage(
+"Browser Tidak Mendukung",
+" Penyimpanan video tidak tersedia di browser ini.",
+"error",
+3000
+);
+
+}
+
+}
+
+init();
+</script>
+
+</body>
+</html>
